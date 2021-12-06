@@ -5,7 +5,7 @@
                                                           //braye teste dorosti
 using namespace std;
 
-void operator+ (const int & i, Saw & s)
+void operator+ (const int & i, Saw & s)                   //operator overloading
 {
     if (s.get_size() == 3)
     {
@@ -13,7 +13,7 @@ void operator+ (const int & i, Saw & s)
         return;
     }
     
-    s.set_size(s.get_size() + i);
+    s.set_size(s.get_size() + i);                       //resize tools to size i
 
     if (s.get_size() > 3)
     {
@@ -57,7 +57,7 @@ int main ()
     i + s;
 
     s.print();
-    
+
     return 0;
 }
 
