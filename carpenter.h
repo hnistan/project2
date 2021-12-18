@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 #ifndef carpenter_h
 #define carpenter_h
@@ -16,11 +17,14 @@ enum WoodType
 
 class Wood
 {
+    friend void show (vector <Wood> w);
     public : 
-        Wood (WoodType woodtype, float length, float width, float height);  
-        bool set_length (float l);
-        bool set_width (float w);
-        bool set_height (float h);
+        Wood (string woodtype, float length, float width, float height);  
+        void set_length (float l);
+        void set_width (float w);
+        void set_height (float h);
+        void set_type(string t);
+        string get_type();
         float get_length () const;
         float get_width () const;
         float get_height () const;
@@ -29,11 +33,12 @@ class Wood
         float length;                          
         float width;                           
         float height; 
-        WoodType type;                       
+        string type;                       
 };
 
 class Tool
 {
+    friend void showw (vector <Tool *> t);
     public :
         string set_name(string n);
         bool set_type (int t);
@@ -72,5 +77,18 @@ class Drill : public Tool
         int number_of_times_used;
 };
 
+
+class Buy
+{
+    public :
+        void set_balance();
+        void set_purchased_tool(string);
+        string get_purchased_tool();
+        long double get_balance();
+
+    private :
+        long double balance;
+        string purchased_tool;
+};
 
 #endif

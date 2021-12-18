@@ -4,44 +4,49 @@
 
 using namespace std;
 
-Wood :: Wood (WoodType type, float length, float width, float height)           //constructor
+Wood :: Wood (string type, float length, float width, float height)           //constructor
 {
     set_length(length);
     set_width (width);
     set_height (height);
 }
 
-bool Wood :: set_length (float l)
+void Wood :: set_type(string t)
+{
+    type = t;
+}
+
+void Wood :: set_length (float l)
 {
     if (l > 0)                                  //Check the length of the positive
     {
         length = l;
-        return true;
+        return;
     }
     else
-        return false;
+        throw invalid_argument ("Length should be positive");
 }
 
-bool Wood :: set_width (float w)
+void Wood :: set_width (float w)
 {
     if (w > 0)                                 //Check the width of the positive
     {
         width = w;
-        return true;
+        return;
     }
     else
-        return false;
+        throw invalid_argument ("Width should be positive");
 }
 
-bool Wood :: set_height (float h)
+void Wood :: set_height (float h)
 { 
     if (h > 0)                                 //Check the height of the positive
     { 
         height = h;
-        return true;
+        return;
     }
     else
-        return false;
+        throw invalid_argument ("Height should be positive");
 }
 
 float Wood :: get_length () const
@@ -57,6 +62,11 @@ float Wood :: get_width () const
 float Wood :: get_height () const
 {
     return height;
+}
+
+string Wood :: get_type()
+{
+    return type;
 }
 
 string Tool :: set_name(string n)
@@ -150,4 +160,25 @@ void Tool :: print() const
     cout << "Name tool : " << get_name() << endl;
     cout << "Type tool : " << get_type() << endl;
     cout << "Size tool : " << get_size() << endl;
+}
+
+
+void Buy :: set_balance()
+{
+    balance = 0;
+}
+
+void Buy :: set_purchased_tool(string n)
+{
+    purchased_tool = n;
+}
+
+long double Buy :: get_balance()
+{
+    return balance;
+}
+
+string Buy :: get_purchased_tool()
+{
+    return purchased_tool;
 }
